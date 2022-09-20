@@ -15,14 +15,13 @@ const LoginForm = () => {
       initialValues={{ remember: false }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"
     >
       <Form.Item
         label="Username"
         name="username"
         rules={[
           { required: true, message: "Please input your username!" },
-          { min: 5, message: "Username must be 5 characters long" },
+          { min: 5, max: 20, message: "Username must be 5-20 characters long" },
         ]}
       >
         <Input data-testid="user_name" />
@@ -31,7 +30,18 @@ const LoginForm = () => {
       <Form.Item
         label="Password"
         name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
+        validateFirst={true}
+        rules={[
+          { required: true, message: "Please input your password!" },
+          { min: 8, message: "Password must be at least 8 characters long" },
+          {
+            pattern: new RegExp(
+              "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+            ),
+            message:
+              "Make sure to have one number, one capital letter and one special symbol",
+          },
+        ]}
       >
         <Input.Password data-testid="password" />
       </Form.Item>

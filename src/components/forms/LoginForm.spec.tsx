@@ -26,14 +26,37 @@ describe("Login Form", () => {
     expect(errorMsg).toBeInTheDocument();
   });
 
-  it("should show error message for invalid username value", async () => {
-    render(<LoginForm />);
-    const userName = await screen.findByTestId("user_name");
-    userEvent.type(userName, "dip");
+  test.each`
+    field          | message                                    | value
+    ${"user_name"} | ${"Username must be 5-20 characters long"} | ${"dip"}
+    ${"user_name"} | ${"Username must be 5-20 characters long"} | ${"thequickbrownfoxjumpedoveralazydog"}
+  `(
+    "Should show $message when incorrect input $value",
+    async ({ field, message, value }) => {
+      render(<LoginForm />);
+      const userName = await screen.findByTestId(field);
+      userEvent.type(userName, value);
 
-    const errorMsg = await screen.findByText(
-      "Username must be 5 characters long"
-    );
-    expect(errorMsg).toBeInTheDocument();
-  });
+      const errorMsg = await screen.findByText(message);
+      expect(errorMsg).toBeInTheDocument();
+    }
+  );
+
+  test.each`
+    field         | message                                                                      | value
+    ${"password"} | ${"Password must be at least 8 characters long"}                             | ${"dip"}
+    ${"password"} | ${"Make sure to have one number, one capital letter and one special symbol"} | ${"nepal#8848"}
+    ${"password"} | ${"Make sure to have one number, one capital letter and one special symbol"} | ${"nepalktm8848"}
+    ${"password"} | ${"Make sure to have one number, one capital letter and one special symbol"} | ${"KtmNepal"}
+  `(
+    "Should show $message when incorrect input $value",
+    async ({ field, message, value }) => {
+      render(<LoginForm />);
+      const userName = await screen.findByTestId(field);
+      userEvent.type(userName, value);
+
+      const errorMsg = await screen.findByText(message);
+      expect(errorMsg).toBeInTheDocument();
+    }
+  );
 });
