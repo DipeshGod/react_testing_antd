@@ -1,8 +1,22 @@
 import { Button, Checkbox, Form, Input } from "antd";
+import { useState } from "react";
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
+  const [message, setMessage] = useState("");
+  const [disabled, setDisabled] = useState(false);
+
+  const handleSubmit = async () => {
+    const response = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+    });
+    const data = await response.json();
+    setMessage(data.data.msg);
+    setDisabled(false);
+  };
+
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    setDisabled(true);
+    handleSubmit();
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -55,10 +69,16 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button data-testid="submit_btn" type="primary" htmlType="submit">
+        <Button
+          disabled={disabled}
+          data-testid="submit_btn"
+          type="primary"
+          htmlType="submit"
+        >
           Submit
         </Button>
       </Form.Item>
+      {message.length > 0 && <div data-testid="msg">{message}</div>}
     </Form>
   );
 };

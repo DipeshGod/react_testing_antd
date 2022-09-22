@@ -19,6 +19,13 @@ Launches the test runner in the interactive watch mode.
 
 <br>
 
-### 01: Starting Easy Simple Form Validation
+## Test Cases:
 
-### `git checkout 01-simple-form-validation-test`
+### Login Form
+
+- should show error message for no username input on submit button click
+- should show error message for no password input on submit button click
+- should show error for incorrect username input values
+- should show error for incorrect password input values
+- login button should be disabled when api is resolving
+- should call login api when form is submitted with correct inputs
