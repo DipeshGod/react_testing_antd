@@ -1,7 +1,9 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { useState } from "react";
+import { useStoreUsers } from "../../store/userStore";
 
 const LoginForm: React.FC = () => {
+  const login = useStoreUsers((state) => state.login);
   const [message, setMessage] = useState("");
   const [disabled, setDisabled] = useState(false);
 
@@ -10,8 +12,12 @@ const LoginForm: React.FC = () => {
       method: "POST",
     });
     const data = await response.json();
+
     setMessage(data.data.msg);
     setDisabled(false);
+    setTimeout(() => {
+      login();
+    }, 1000);
   };
 
   const onFinish = (values: any) => {
