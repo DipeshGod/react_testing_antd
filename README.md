@@ -7,19 +7,19 @@ This project was created to demonstrate testing most common use cases in react a
 - Conditional Rendering
 - UI state testing
 
-## Clone The Project To Follow Along Better
-
-1.  Clone this repo [ReactAntdTesting](https://github.com/DipeshGod/react_testing_antd.git)
-2.  Open up the terminal in project folder
-3.  ### `npm install`
-
-### Tech sack used:
+### Tech stack used:
 
 - [React App Boostrappted with CRA cli](https://reactjs.org/docs/create-a-new-react-app.html)
 - [Ant D React UI Library](https://ant.design/docs/react/introduce)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/)
 - [Mock Service Worker](https://mswjs.io/)
+
+## Clone The Project To Follow Along Better
+
+1.  Clone this repo [ReactAntdTesting](https://github.com/DipeshGod/react_testing_antd.git)
+2.  Open up the terminal in project folder
+3.  ### `npm install`
 
 ## Spin Up The App and Test Suite
 
