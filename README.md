@@ -1,6 +1,6 @@
 # Test Driven Development with React
 
-This project was created to demonstrate testing most common use cases in react applications
+This project was created to demonstrate testing most common use cases in react applications. This apps show a pokemon if logged in with valid credentials.
 
 - Form validation
 - Api response with mocking
@@ -11,6 +11,7 @@ This project was created to demonstrate testing most common use cases in react a
 
 - [React App Boostrappted with CRA cli](https://reactjs.org/docs/create-a-new-react-app.html)
 - [Ant D React UI Library](https://ant.design/docs/react/introduce)
+- [Zustand State Management Library](https://docs.pmnd.rs/zustand/getting-started/introduction)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/)
 - [Mock Service Worker](https://mswjs.io/)
@@ -48,3 +49,7 @@ Launches the test runner in the interactive watch mode.
 
 - should call login api when form is submitted with correct inputs
 - show pokemon component after login instead of login form (conditional rendering)
+
+### Pokemon Component
+
+- should show loading before pokemon is fetched
