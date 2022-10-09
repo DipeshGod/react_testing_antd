@@ -1,6 +1,6 @@
 # Test Driven Development with React
 
-This project was created to demonstrate testing most common use cases in react applications. This apps show a pokemon if logged in with valid credentials.
+This project was created to demonstrate testing most common use cases in react applications. This app shows a pokemon if logged in with valid credentials.
 
 - Form validation
 - Api response with mocking
